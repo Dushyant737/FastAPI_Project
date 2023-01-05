@@ -24,7 +24,7 @@ def create_blog(blog: BaseModel):
     return "Ok"
 """
 
-
+"""
 class BlogModel(BaseModel):
     title : str
     content : str
@@ -37,3 +37,23 @@ def create_blog(blog: BlogModel):
     # return "Ok"
     # return blog
     return {"Data":blog}
+
+"""
+
+# Path and query parameters in Post 
+
+class BlogModel(BaseModel):
+    title : str
+    name : str
+    content : str
+    nb_comments : int
+    published : Optional[bool]
+    
+
+@router.post('/new/{id}')
+def create_blog(blog: BlogModel , id : int , version : int =1 ):
+    return {
+        'id' : id,
+        'Data':blog,
+        'version' : version
+        }
