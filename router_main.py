@@ -6,10 +6,10 @@ app = FastAPI()
 app.include_router(blog_get.router)
 app.include_router(blog_post.router)
 
-"""
+
 @app.get('/')
 def hello_method():
-    return {"Message" : "Welcome to FastAPI, Happy Learning !"}
-"""    
+    return {"Message" : "Welcome to FastAPI, this is router main program !"}
+ 
   
  

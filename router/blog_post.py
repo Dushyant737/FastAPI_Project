@@ -62,8 +62,8 @@ def create_blog(blog: BlogModel , id : int , version : int =1 ):
 
 # Program for metadata (Title, Descption, Alias)
     
-"""   
 
+"""
 class BlogModel(BaseModel):
     title : str
     name : str
@@ -77,8 +77,8 @@ def create_comment(blog: BlogModel , id : int,
         comment_id: int = Query(None,
             title="Id of the comment",
             description="some description of the comment",
-           # alias="commentId",
-           # deprecated=True
+            alias="commentId",
+            deprecated=True
         )):
     return {
         'blog' : blog,
@@ -111,9 +111,9 @@ def create_comment(blog: BlogModel , id : int,
         # content: str = Body("Hi, How are you ?") # it's optinal 
         # content: str = Body(Ellipsis)
         content: str = Body(...,
-        min_length=10,
-        max_length=20,
-        regex='[a-z\s]*$'
+        min_length=2,
+        max_length=6,
+        regex='[a-z\s]*$',
         )
         
     ):   
@@ -123,7 +123,8 @@ def create_comment(blog: BlogModel , id : int,
         'Data':blog,
         'comment_id' : comment_id
         }
-"""        
+       
+"""
 
 # multiple values with list in query peremeters 
 
@@ -164,9 +165,10 @@ def create_comment(blog: BlogModel , id : int,
         'comment_id' : comment_id,
         'Vesrion' : v,
         }
-"""        
+      
+"""
 
-# Number Peremeres
+# Number Peremeters
 
 """
 class BlogModel(BaseModel):
@@ -205,9 +207,12 @@ def create_comment(blog: BlogModel , id : int,
         'Vesrion' : v,
         'comment_id' : comment_id
         }
+
 """
 
 # complex subtypes
+
+
 
 class Image(BaseModel):
     url: str
@@ -230,3 +235,4 @@ def create_blog(blog: BlogModel , id : int , version : int =1 ):
         'Data':blog,
         'version' : version
         }
+
